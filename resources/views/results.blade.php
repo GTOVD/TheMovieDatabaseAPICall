@@ -29,26 +29,24 @@
     </head>
     <body class="antialiased">
        
-        <form action="/" method="POST">
-            @csrf
+    <ul class="list-group">
+        <li class="list-group-item">Movie Title: {!! $movieData['movieTitle'] !!}</li>
+        <li class="list-group-item">Movie Overview: {!! $movieData['movieOverview'] !!}</li>
+        <li class="list-group-item">Movie Release Date: {!! $movieData['movieReleaseDate'] !!}</li>
+        <li class="list-group-item">Movie Runtime in Minutes: {!! $movieData['movieRuntime'] !!}</li>
 
-            <div class="mb-3 row">
-            <label for="inputAPIKey" class="col-sm-2 col-form-label">API Key</label>
-                <div class="col-sm-10">
-                    <input type="text" name="APIKey" class="form-control" id="inputAPIKey">
-                </div>
-            </div>
+        @foreach($movieData['movieCast'] as $cast)
+            <li class="list-group-item">Cast Member #{{$loop->iteration}}: {{$cast}}</li>
 
-            <div class="mb-3 row">
-            <label for="inputMovieName" class="col-sm-2 col-form-label">Movie Search</label>
-                <div class="col-sm-10">
-                    <input type="text" name="MovieName" class="form-control" id="inputMovieName">
-                </div>
-            </div>
+            @if ($loop->iteration == 10)
+                @break
+            @endif
 
-            <button type="submit" class="btn btn-light" value="submit">Submit</button>
-            
-        </form>
+        @endforeach
+        
+    </ul>
 
     </body>
 </html>
+
+
