@@ -15,6 +15,8 @@ use App\Http\Controllers\MovieSearch;
 */
 
 
-Route::get('/', [MovieSearch::class,'getMovieData']);
+Route::get('/', function(){
+    return view('welcome');
+});
 
 Route::post('/', [MovieSearch::class, 'postUserData']);
